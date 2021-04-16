@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./predlozak.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="naslov">
+        #{p['pogled4.naslov']}
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="aerodromiForm">
+            <div class="unosIntervala container">
+                <h:outputText value="#{p['pogled4.naslov']}"/>
+                <h:outputText value="&nbsp;" styleClass="praznaLinija"/>
+                <h:outputLabel>#{p['pogled4.odDatuma']}</h:outputLabel>
+                <h:inputText id="odDatuma" value="#{aerodromiWs.odDatuma}"/> &nbsp;
+                <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+                <h:outputLabel>#{p['pogled4.doDatuma']}</h:outputLabel>
+                <h:inputText id="doDatuma" value="#{aerodromiWs.doDatuma}"/> &nbsp;
+                <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+            </div>
+            <div class="prikazAerodroma container">
+                <p:dataTable id="aerodromi" value="#{aerodromiWs.aerodromi}" var="a"  rows="5" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {NextPageLink} {RowsPerPageDropdown}"  rowsPerPageTemplate="5,10,15,20,50, 100">
+                    <p:column>
+                        <f:facet name="header">#{p['pogled4.icao']}</f:facet>#{a.icao}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">#{p['pogled4.naziv']}</f:facet>#{a.naziv}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">#{p['pogled4.drzava']}</f:facet>#{a.drzava}
+                    </p:column>
+                    <p:column>
+                        <h:commandButton id="dajAvioneBtn" value="#{p['pogled4.prikazAvionaButton']}" action="#{aerodromiWs.prikaziAvione(a.icao)}">
+                            <f:ajax execute="aerodromiForm aerodromi dajAvioneBtn avioni" render="avioni"/>
+                        </h:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+
+        <p:dataTable id="avioni" value="#{aerodromiWs.avioni}" var="b" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {NextPageLink} {LastPageLink}"  rowsPerPageTemplate="10,15,20,50, 100">
+            <p:column>
+                <f:facet name="header">#{p['pogled4.icao24']}</f:facet>#{b.icao24}
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{p['pogled4.callsign']}</f:facet>#{b.callsign}
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{p['pogled4.polijetanje']}</f:facet>#{aerodromiWs.dajDatum(b.firstSeen)}
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{p['pogled4.slijetanje']}</f:facet>#{aerodromiWs.dajDatum(b.lastSeen)}
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{p['pogled4.polazisteAerodrom']}</f:facet>#{b.estArrivalAirport}
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{p['pogled4.odredisteAerodrom']}</f:facet>#{b.estDepartureAirport}
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+
+</ui:composition>

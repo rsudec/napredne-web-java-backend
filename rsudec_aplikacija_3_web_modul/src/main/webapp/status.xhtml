@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./predlozak.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="naslov">
+        Status
+    </ui:define>
+
+    <ui:define name="content">
+        <h:outputText value="SOCKET SERVER"/>
+        <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+        <h:outputText id="ssStanje" value="Stanje Socket Servera: #{status.stanjeSocket}"/>
+        <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+
+        <h:commandButton id="btnStanje" value="Stanje SS" action="#{status.dajStanje()}">
+            <f:ajax execute="btnStanje" render="ssStanje ssPoruka"/>
+        </h:commandButton>
+        <h:commandButton id="btnPauza" value="Pauza SS" action="#{status.pauziraj()}">
+            <f:ajax execute="btnPauza" render="ssStanje ssPoruka"/>
+        </h:commandButton>
+        <h:commandButton id="btnRadi" value="Radi SS" action="#{status.radi()}">
+            <f:ajax execute="btnRadi" render="ssStanje ssPoruka"/>
+        </h:commandButton>
+        <h:commandButton id="btnKraj" value="Kraj SS" action="#{status.kraj()}">
+            <f:ajax execute="btnKraj" render="ssStanje ssPoruka"/>
+        </h:commandButton>
+        <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+        <h:outputText id="ssPoruka" value="#{status.poruka}"/>
+
+
+
+
+        <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+        <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+        <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+
+        <h:outputText value="GRUPA u NWTiS"/>
+        <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+        <h:outputText id="grupaStanje" value="Stanje grupe: #{status.stanjeGrupa}"/>
+        <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+
+        <h:commandButton id="btnStanjeGrupe" value="Stanje grupe" action="#{status.dajStanjeGrupe()}">
+            <f:ajax execute="btnStanjeGrupe" render="grupaStanje gPoruka"/>
+        </h:commandButton>
+        <h:commandButton id="btnPrijaviG" value="Prijavi" action="#{status.grupaPrijavi()}">
+            <f:ajax execute="btnPrijaviG" render="grupaStanje gPoruka"/>
+        </h:commandButton>
+        <h:commandButton id="btnOdjaviG" value="Odjavi" action="#{status.grupaOdjavi()}">
+            <f:ajax execute="btnOdjaviG" render="grupaStanje gPoruka"/>
+        </h:commandButton>
+        <h:commandButton id="btnAktivirajG" value="Aktiviraj" action="#{status.grupaAktiviraj()}">
+            <f:ajax execute="btnAktivirajG" render="grupaStanje gPoruka"/>
+        </h:commandButton>
+        <h:commandButton id="btnBlokirajG" value="Blokiraj" action="#{status.grupaBlokiraj()}">
+            <f:ajax execute="btnBlokirajG" render="grupaStanje gPoruka"/>
+        </h:commandButton>
+        <h:form>
+            <h:inputText id="aerodromiTxt" value="#{status.aerodromiTxt}"/> &nbsp;
+            <h:commandButton id="btnAerodromi" value="Aerodromi" action="#{status.grupaAerodromi()}">
+                <f:ajax execute="aerodromiTxt btnAerodromi" render="grupaStanje gPoruka"/>
+            </h:commandButton>
+        </h:form>
+        <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+        <h:outputText id="gPoruka" value="#{status.porukaGrupa}"/>
+    </ui:define>
+
+</ui:composition>

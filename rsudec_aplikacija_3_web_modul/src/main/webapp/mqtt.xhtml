@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./predlozak.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="naslov">
+        MQTT Poruke
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+        <p:dataTable  id="mqtt" class="center P" value="#{mqtt.mqtt}" var="a" rows="#{mqtt.pages}" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {NextPageLink} {LastPageLink}">
+                <p:column> 
+                    <f:facet name="header">ID</f:facet>#{a.id}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Korisnik</f:facet>#{a.korisnik}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Aerodrom</f:facet>#{a.aerodrom}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Poruka</f:facet>#{a.poruka}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Vrijeme</f:facet>#{a.vrijeme}
+                </p:column>
+
+            </p:dataTable> 
+        
+        
+            <h:commandButton id="brisiMqtt" value="Obriši poruke" action="#{mqtt.obrisiPoruke()}">
+                <f:ajax execute="brisiMqtt" render="mqtt"/>
+                </h:commandButton>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

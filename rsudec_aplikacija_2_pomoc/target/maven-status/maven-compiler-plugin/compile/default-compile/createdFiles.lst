@@ -1,0 +1,5 @@
+org\foi\nwtis\rsudec\sb\SlanjePodataka.class
+org\foi\nwtis\rsudec\web\slusac\SlusacAplikacije.class
+org\foi\nwtis\rsudec\sb\JMS_Red_1.class
+org\foi\nwtis\rsudec\ws\server\SoapWS.class
+org\foi\nwtis\rsudec\sb\WebSocketEndpoint.class

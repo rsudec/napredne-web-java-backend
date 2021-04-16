@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_8.xsd" version="8">
+  <display-name>rsudec_aplikacija_2</display-name>
+  <module>
+    <web>
+      <web-uri>org.foi.nwtis.rsudec-rsudec_aplikacija_2_pomoc-1.0.war</web-uri>
+      <context-root>/rsudec_aplikacija_2_pomoc</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>org.foi.nwtis.rsudec-rsudec_modul_1-1.0.jar</ejb>
+  </module>
+  <module>
+    <ejb>org.foi.nwtis.rsudec-rsudec_modul_2-1.0.jar</ejb>
+  </module>
+  <library-directory>lib</library-directory>
+</application>

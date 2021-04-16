@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>NWTIS konfiguracija</comment>
+    <entry key="server.database">jdbc:derby://localhost:1527/</entry>
+    <entry key="admin.username">rsudec</entry>
+    <entry key="admin.password">rsudec</entry>
+    <entry key="admin.database">nwtis_rsudec_bp_1</entry>
+    <entry key="user.username">rsudec</entry>
+    <entry key="user.password">rsudec</entry>
+    <entry key="user.database">nwtis_rsudec_bp_1</entry>
+    <entry key="jdbc.mysql">com.mysql.jdbc.Driver</entry>
+    <entry key="jdbc.derby">org.apache.derby.jdbc.ClientDriver</entry>
+    <entry key="LocationIQ.token">ddb9ba8d114ebe</entry>
+    <entry key="OpenWeatherMap.apikey">47a3d1ca195d8a5f8438340b266f93ea</entry>
+    <entry key="OpenSkyNetwork.korisnik">rsudec</entry>
+    <entry key="OpenSkyNetwork.lozinka">cfilosvZ123</entry>
+    <entry key="preuzimanje.status">true</entry>
+    <entry key="preuzimanje.pocetak">01.01.2020</entry>
+    <entry key="preuzimanje.kraj">30.04.2020</entry>
+    <entry key="preuzimanje.ciklus">60</entry>
+    <entry key="preuzimanje.pauza">1000</entry>
+    
+    <entry key="posluzitelj.socket.port">9999</entry>
+    
+    
+    <entry key="dnevnik.stranicenje">15</entry>
+    <entry key="mqtt.stranicenje">15</entry>
+    <entry key="mqtt.velicinaSkupine">5</entry>
+    
+    <entry key="serijalizacija.datoteka">poruke.bin</entry>
+    
+</properties>

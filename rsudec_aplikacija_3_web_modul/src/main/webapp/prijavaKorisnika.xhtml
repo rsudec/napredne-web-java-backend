@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./predlozak.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="naslov">
+        Prijava/Registracija
+    </ui:define>
+
+    <ui:define name="content">
+        <h:outputText value="Prijava/Registracija korisnika"/>
+        <h:outputText value="&nbsp;" styleClass="praznaLinija"/>
+
+        <h:form>
+            <h:outputLabel>Korisničko ime</h:outputLabel>
+            <h:inputText id="username" value="#{prijavaKorisnika.korisnik}" validator="#{prijavaKorisnika.provjeraUsername}"/> &nbsp; <h:message for="username" class="porukaPogreske"/>
+            <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+            <h:outputLabel>Lozinka</h:outputLabel>
+            <h:inputText id="password" value="#{prijavaKorisnika.lozinka}" validator="#{prijavaKorisnika.provjeraPassword}"/> &nbsp; <h:message for="password" class="porukaPogreske"/>
+            <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+
+            <h:commandButton value="Prijava" action="#{prijavaKorisnika.autenticiraj()}"/>
+        </h:form>
+        <h:form>
+            <h:outputLabel>Korisničko ime</h:outputLabel>
+            <h:inputText id="korime" value="#{registracijaKorisnika.korisnik}" validator="#{registracijaKorisnika.provjeraKorisnickoIme}"/> &nbsp; <h:message for="korime" class="porukaPogreske"/>
+            <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+            <h:outputLabel>Ime</h:outputLabel>
+            <h:inputText id="ime" value="#{registracijaKorisnika.ime}" validator="#{registracijaKorisnika.provjeraIme}"/> &nbsp; <h:message for="ime" class="porukaPogreske"/>
+            <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+            <h:outputLabel>Prezime</h:outputLabel>
+            <h:inputText id="prezime" value="#{registracijaKorisnika.prezime}" validator="#{registracijaKorisnika.provjeraPrezime}"/> &nbsp; <h:message for="prezime" class="porukaPogreske"/>
+            <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+            <h:outputLabel>E-mail</h:outputLabel>
+            <h:inputText id="email" value="#{registracijaKorisnika.email}" validator="#{registracijaKorisnika.provjeraEmail}"/> &nbsp; <h:message for="email" class="porukaPogreske"/>
+            <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+            <h:outputLabel>Lozinka</h:outputLabel>
+            <h:inputText id="lozinka" value="#{registracijaKorisnika.lozinka}" validator="#{registracijaKorisnika.provjeraLozinka}"/> &nbsp; <h:message for="lozinka" class="porukaPogreske"/>
+            <h:outputText styleClass="praznaLinija" value="&nbsp;"/>
+            <h:commandButton value="Registracija" action="#{registracijaKorisnika.registriraj()}"/>
+        </h:form>
+
+        <h:form>
+            <p:dataTable  id="korisnici" widgetVar="korisniciPF" class="center P" value="#{pregledKorisnika.korisnici}" filteredValue="#{pregledKorisnika.filtriraniKorisnici}" emptyMessage="Nije pronađen korisnik" var="a" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {NextPageLink} {LastPageLink}">
+
+                <p:column filterBy="#{a.ime}" headerText="Ime" filterMatchMode="contains"> 
+
+                    <h:outputText value="#{a.ime}" />
+                </p:column>
+                <p:column filterBy="#{a.prezime}" headerText="Prezime" filterMatchMode="contains"> 
+
+                    <h:outputText value="#{a.prezime}" />
+                </p:column>
+
+                <p:column filterBy="#{a.emailAdresa}" headerText="E-mail" filterMatchMode="contains"> 
+
+                    <h:outputText value="#{a.emailAdresa}" />
+                </p:column>
+                <p:column filterBy="#{a.korIme}" headerText="Korisničko ime" filterMatchMode="contains"> 
+
+                    <h:outputText value="#{a.korIme}" />
+                </p:column>
+                <p:column filterBy="#{a.lozinka}" headerText="Lozinka" filterMatchMode="contains"> 
+
+                    <h:outputText value="#{a.lozinka}" />
+                </p:column>
+
+            </p:dataTable>   
+        </h:form>
+    </ui:define>
+
+</ui:composition>

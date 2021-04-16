@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./predlozak.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="naslov">
+        Dnevnik rada
+    </ui:define>
+
+    <ui:define name="content">
+        
+        <p:dataTable  id="dnevnik" class="center P" value="#{dnevnik.dnevnik}" var="a" rows="#{dnevnik.pages}" paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {NextPageLink} {LastPageLink}">
+                <p:column> 
+                    <f:facet name="header">ID</f:facet>#{a.id}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Akcija</f:facet>#{a.akcija}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Vrijeme</f:facet>#{a.vrijeme}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">URL</f:facet>#{a.url}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">IP Adresa</f:facet>#{a.ipadresa}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Korisnik</f:facet>#{a.korisnik}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Trajanje (ms)</f:facet>#{a.trajanje}
+                </p:column>
+
+            </p:dataTable>   
+        
+    </ui:define>
+
+</ui:composition>
